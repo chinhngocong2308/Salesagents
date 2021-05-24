@@ -15,12 +15,29 @@ namespace AHT\Salesagents\Model\ResourceModel\Product\Sold;
 
 use Magento\Framework\DB\Select;
 use Zend_Db_Select_Exception;
-
+use Magento\Framework\DB\Sql\Expression;
 /**
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
 class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
 {
+    protected $_entityAttributeCollection;
+
+    /**
+     * Set Date range to collection
+     *
+     * @param string $attr_code
+     * @return $attributeId
+     */
+
+    private function getProductNameAttributeId($attr_code)
+    {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $entityAttribute = $objectManager->get('Magento\Eav\Model\ResourceModel\Entity\Attribute');
+        $attributeId = $entityAttribute->getIdByCode('catalog_product', $attr_code);
+
+        return $attributeId;
+    }
     /**
      * Set Date range to collection
      *
@@ -73,40 +90,57 @@ class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
             ['order' => $this->getTable('sales_order')],
             implode(' AND ', $orderJoinCondition),
             'status',
-        )->joinLeft( 
+        )->joinLeft(
             ['commission_value' => $this->getConnection()->getTableName('catalog_product_entity_decimal')],
-            'order_items.product_id = commission_value.entity_id and commission_value.attribute_id = "159"',
+            "order_items.product_id = commission_value.entity_id and commission_value.attribute_id = {$this->getProductNameAttributeId('commission_value')}",
             ['sa_commission_value' => 'commission_value.value']
         )
-        ->joinLeft( 
-            ['commission_type' => $this->getConnection()->getTableName('catalog_product_entity_int')],
-            'order_items.product_id = commission_type.entity_id and commission_type.attribute_id = "158"',
-            ['sa_commission_type' => 'commission_type.value',]
-        )
-        ->joinLeft( 
-            ['sale_agent' => $this->getConnection()->getTableName('catalog_product_entity_text')],
-            'order_items.product_id = sale_agent.entity_id and sale_agent.attribute_id = "157"',
-            [   'sale_agent' => 'sale_agent.value',
+            ->joinLeft(
+                ['commission_type' => $this->getConnection()->getTableName('catalog_product_entity_int')],
+                "order_items.product_id = commission_type.entity_id and commission_type.attribute_id = {$this->getProductNameAttributeId('commission_type')}",
+                ['sa_commission_type' => 'commission_type.value',]
+                // array('new_price_for_sort' => new Zend_Db_Expr('IF(a.value > 0,1, 0)'), // which mean that in new field we will have price if it's not 0, and will have big integer is real price is zero. 
+                //     ));
+            )
+            ->joinLeft(
+                ['commission_type_name' => $this->getConnection()->getTableName('commission_type')],
+                "commission_type.value = commission_type_name.type_id",
+                ['sa_commission_type_name' => 'commission_type_name.type_name',]
+            )  
+            ->joinLeft(
+                ['sale_agent' => $this->getConnection()->getTableName('catalog_product_entity_text')],
+                "order_items.product_id = sale_agent.entity_id and sale_agent.attribute_id = {$this->getProductNameAttributeId('sale_agent_id')}",
+                [
+                    'sale_agent' => 'sale_agent.value',
                 ]
-        )
-        ->where(
-            'order_items.parent_item_id IS NULL and sale_agent.value IS NOT NULL'
-        )->group(
-            'order_items.sku'
-        ) 
-        ->columns(
-            'order_items.base_row_total_incl_tax as product_price_final'
-        )
-        ->columns(
-             'round(order_items.base_price-commission_value.value) as result_commission'
-        )
-            //  CASE WHEN IDParent < 1 THEN ID ELSE IDPArent END AS ColumnName
-        ->having(
-            'SUM(order_items.qty_ordered) > ?',
-            0
-        )
-       
-        ->order('order.status');
+            )
+            ->joinLeft(
+                ['sale_agent_name' => $this->getConnection()->getTableName('customer_entity')],
+                "sale_agent.value = sale_agent_name.entity_id ",
+                [
+                    'saleagent_name' => 'CONCAT(sale_agent_name.lastname," ", sale_agent_name.firstname )',
+                ]
+            )
+            ->where(
+                'order_items.parent_item_id IS NULL and sale_agent.value IS NOT NULL'
+            )->group(
+                'order_items.sku'
+            )
+            ->columns(
+                'order_items.base_row_total_incl_tax as product_price_final'
+            )
+            ->columns(
+                '(order_items.base_price*commission_value.value/100) as result_commission'
+            )
+            // ->columns(
+            //     array('result_commission',
+            // new Expression('')))
+            ->having(
+                'SUM(order_items.qty_ordered) > ?',
+                0
+            )
+
+            ->order('order.status');
         return $this;
     }
 

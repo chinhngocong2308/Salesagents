@@ -68,8 +68,8 @@
                 <arguments>
                     <argument name="header" xsi:type="string" translate="true">Commission Type</argument>
                     <argument name="type" xsi:type="string">text</argument>
-                    <argument name="index" xsi:type="string">sa_commission_type</argument>
-                    <argument name="id" xsi:type="string">sa_commission_type</argument>
+                    <argument name="index" xsi:type="string">sa_commission_type_name</argument>
+                    <argument name="id" xsi:type="string">sa_commission_type_name</argument>
                     <argument name="column_css_class" xsi:type="string">col-type</argument>
                     <argument name="header_css_class" xsi:type="string">col-type</argument>
                 </arguments>
@@ -80,7 +80,7 @@
                 <arguments>
                     <argument name="header" xsi:type="string" translate="true">Sale Agent</argument>
                     <argument name="type" xsi:type="string">text</argument>
-                    <argument name="index" xsi:type="string">sale_agent</argument>
+                    <argument name="index" xsi:type="string">saleagent_name</argument>
                     <argument name="id" xsi:type="string">sale_agent</argument>
                     <argument name="column_css_class" xsi:type="string">col-sale_agent</argument>
                     <argument name="header_css_class" xsi:type="string">col-sale_agent</argument>
@@ -106,6 +106,16 @@
                     <argument name="header_css_class" xsi:type="string">col-commissions</argument>
                 </arguments>
             </block>
+            <!-- <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.report.grid.result_commission1" as="result_commission1">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Result Commission</argument>
+                    <argument name="type" xsi:type="string">currency</argument>
+                    <argument name="index" xsi:type="string">result_commission1</argument>
+                    <argument name="id" xsi:type="string">result_commission1</argument>
+                    <argument name="column_css_class" xsi:type="string">col-commissions1</argument>
+                    <argument name="header_css_class" xsi:type="string">col-commissions1</argument>
+                </arguments>
+            </block> -->
             <block class="Magento\Backend\Block\Widget\Grid\Column" as="ordered_qty">
                 <arguments>
                     <argument name="header" xsi:type="string" translate="true">Ordered Quantity</argument>

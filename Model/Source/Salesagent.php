@@ -30,7 +30,7 @@ class Salesagent extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSour
             foreach ($collection as $item) {
                 $this->optArray[] = [
                     'label' => ' '.$item->getFirstname(). ' '.$item->getMiddlename().' '.$item->getLastname(),
-                    'value' => $item->getFirstname(). ' '.$item->getMiddlename().' '.$item->getLastname(),
+                    'value' => $item->getEntityId(),
                 ];
             }
         }
