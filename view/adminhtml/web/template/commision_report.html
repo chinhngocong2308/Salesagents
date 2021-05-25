@@ -1,0 +1,106 @@
+
+<div id="page:main-container" class="page-columns">
+    <div class="admin__old">
+        <div id="container" class="main-col">
+            <div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+                <div class="data-grid-search-control-wrap">
+                    <label class="data-grid-search-label" 
+                        title="Search" for="fulltext">
+                        <span >Search</span>
+                    </label>
+                    <input class="admin__control-text data-grid-search-control" type="text"  id="fulltext"
+                        placeholder="Search by keyword">
+                    <button class="action-submit" type="button" >
+                        <span >Search</span>
+                    </button>
+                </div>
+                <br><br><br>
+                <table class="data-grid" id="gridProductsSold_table">
+                    <thead>
+                        <tr>
+                            <th class="data-grid-th col-period no-link col-period"><span>Interval</span></th>
+                            <th data-sort="name" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-product col-name"><span>Product</span></th>
+                            <th data-sort="sku" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-sku col-sku"><span>SKU</span></th>
+                            <th data-sort="commission" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-commission col-commission"><span>Commission
+                                    Value</span></th>
+                            <th data-sort="type" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-type col-type"><span>Commission Type</span>
+                            </th>
+                            <th data-sort="saleagent" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-sale_agent col-saleagent"><span>Sale
+                                    Agent</span>
+                            </th>
+                            <th data-sort="product_price_final" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-price col-product_price_final"><span>Price
+                                    Incl
+                                    Tax</span></th>
+                            <th data-sort="result_commission" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-commissions col-result_commission">
+                                <span>Result
+                                    Commission</span></th>
+                            <th data-sort="ordered_qty" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-qty col-ordered_qty"><span>Ordered
+                                    Quantity</span></th>
+                            <th data-sort="email" data-direction="asc"
+                                class="data-grid-th _sortable not-sort col-email last col-email"><span>Status</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-bind="foreach: commissionProduct">
+
+                        <tr title="#" data-role="row" class="even_clickable">
+                            <td data-column="period"  rowspan="3" class=" col-period col-period  ">
+                                2021 </td>
+                            <td data-column="name"  data-bind="text: order_items_name" class=" col-product col-name  ">
+                                Minerva LumaTech™ V-Tee </td>
+                            <td data-column="sku" data-bind="text: order_items_sku" class=" col-sku col-sku  ">
+                                WS08-XS-Blue </td> 
+                            <td data-column="commission" data-bind="text: order_items_sku" class=" col-commission col-commission a-right  ">
+                                $5.00 </td>
+                            <td data-column="type" class=" col-type col-type  ">
+                                Percent </td>
+                            <td data-column="saleagent" class=" col-sale_agent col-saleagent  ">
+                                Ngo Cong Chinh </td>
+                            <td data-column="product_price_final" class=" col-price col-product_price_final a-right  ">
+                                $34.64 </td>
+                            <td data-column="result_commission"
+                                class=" col-commissions col-result_commission a-right  ">
+                                $1.60 </td>
+                            <td data-column="ordered_qty" class=" col-qty col-ordered_qty col-number  ">
+                                1 </td>
+                            <td data-column="email" class=" col-email col-email  last">
+                                closed </td>
+                        </tr>
+                    <tfoot>
+                        <tr class="totals" data-role="row">
+                            <th data-column="period" class=" col-period col-period">
+                                Total </th>
+                            <th data-column="name" class=" col-product col-name">
+                            </th>
+                            <th data-column="sku" class=" col-sku col-sku">
+                            </th>
+                            <th data-column="commission" class=" col-commission col-commission a-right">
+                            </th>
+                            <th data-column="type" class=" col-type col-type">
+                            </th>
+                            <th data-column="saleagent" class=" col-sale_agent col-saleagent">
+                            </th>
+                            <th data-column="product_price_final" class=" col-price col-product_price_final a-right">
+                            </th>
+                            <th data-column="result_commission" class=" col-commissions col-result_commission a-right">
+                            </th>
+                            <th data-column="ordered_qty" class=" col-qty col-ordered_qty col-number">
+                                3 </th>
+                            <th data-column="email" class=" col-email col-email">
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

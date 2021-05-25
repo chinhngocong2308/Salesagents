@@ -73,7 +73,7 @@ class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
             $orderTableAliasName . '.entity_id = order_items.order_id',
             $connection->quoteInto("{$orderTableAliasName}.state <> ?", \Magento\Sales\Model\Order::STATE_CANCELED),
         ];
-
+        
         if ($from != '' && $to != '') {
             $fieldName = $orderTableAliasName . '.created_at';
             $orderJoinCondition[] = $this->prepareBetweenSql($fieldName, $from, $to);
