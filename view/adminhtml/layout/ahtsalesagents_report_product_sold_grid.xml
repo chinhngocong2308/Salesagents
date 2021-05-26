@@ -14,18 +14,6 @@
                 <argument name="dataSource" xsi:type="object">AHT\Salesagents\Model\ResourceModel\Product\Sold\Collection\Initial</argument>
             </arguments>
         </referenceBlock>
-        <referenceBlock name="adminhtml.report.grid.export">
-            <arguments>
-                <argument name="exportTypes" xsi:type="array">
-                    <item name="csv" xsi:type="array">
-                        <item name="urlPath" xsi:type="string">*/*/exportSoldCsv</item>
-                    </item>
-                    <item name="excel" xsi:type="array">
-                        <item name="urlPath" xsi:type="string">*/*/exportSoldExcel</item>
-                    </item>
-                </argument>
-            </arguments>
-        </referenceBlock>
         <referenceBlock name="adminhtml.report.grid.columnSet">
             <arguments>
                 <argument name="id" xsi:type="string">report_product_sold</argument>

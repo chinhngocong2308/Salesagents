@@ -71,9 +71,7 @@ class Index extends \Magento\Framework\App\Action\Action
     {
 
         /* @var \Magento\Framework\Controller\Result\Json $resultJson */
-         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-         $orderCommission = $objectManager->get('AHT\Salesagents\Model\ResourceModel\Product\Sold\Collection');
-         $commission = $orderCommission->addOrderedQty()->getData();
+       
 
         $resultJson = $this->jsonFactory->create();
         return $resultJson->setData($commission);

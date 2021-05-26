@@ -1,0 +1,18 @@
+{
+    "aht_sales_agent": {
+        "column": {
+            "entity_id": true,
+            "order_id": true,
+            "order_item_id": true,
+            "order_item_sku": true,
+            "order_item_price": true,
+            "commision_type": true,
+            "commission_value": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

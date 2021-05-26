@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="AHT\Salesagents\Api\Data\SalesagentInterface" type="AHT\Salesagents\Model\Salesagent" />
+    <preference for="AHT\Salesagents\Api\SalesagentRepositoryInterface" type="AHT\Salesagents\Model\SaleagentRepository" />
+    
+    <type name="Magento\Customer\Model\Data\Customer">
+        <plugin name="aht_changefirstnameplugin" type="AHT\Salesagents\Plugin\Customer\FirstnamesaPlugin" sortOrder="1" disabled="false"/>
+    </type>
+</config>
