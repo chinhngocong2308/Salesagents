@@ -26,7 +26,7 @@ class Index  extends \Magento\Reports\Controller\Adminhtml\Report\Sales
         // $entityAttribute = $objectManager->get('AHT\Salesagents\Model\ResourceModel\Product\Sold\Collection');
         // $attributeId = $entityAttribute->addOrderedQty()->getData();
 
-        $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Products Commission Salesagent'));
+        $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Products Commission Report'));
         $this->_view->renderLayout();
 
     }

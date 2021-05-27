@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ahtsalesagents_sacommission_listing.ahtsalesagents_sacommission_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>ahtsalesagents_sacommission_listing_columns</spinner>
+        <deps>
+            <dep>ahtsalesagents_sacommission_listing.ahtsalesagents_sacommission_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="ahtsalesagents_sacommission_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">item_id</param>
+            </storageConfig>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="ahtsalesagents_sacommission_listing_data_source">
+            <settings>
+                <requestFieldName>item_id</requestFieldName>
+                <primaryFieldName>item_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <!-- <exportButton name="export_button"/> -->
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging"/>
+        <!-- <massaction name="listing_massaction" /> -->
+    </listingToolbar>
+    <columns name="ahtsalesagents_sacommission_listing_columns">
+        <!-- <selectionsColumn name="entity_id">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn> -->
+        <column name="order_items_sku">
+            <settings>
+                <label translate="true">SKU</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="order_items_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Product Name</label>
+            </settings>
+        </column>
+        <column name="sa_commission_value" class="AHT\Salesagents\Ui\Component\Listing\Column\Commissiontype">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">120</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Value</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="sa_commission_type" class="AHT\Salesagents\Ui\Component\Listing\Column\Commissiontype">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">120</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Type</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="saleagent_name">
+            <settings>
+                <label translate="true">Sales Agent</label>
+            </settings>
+        </column>
+         <column name="result_commission" class="AHT\Salesagents\Ui\Component\Listing\Column\Commissiontype">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">120</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Result</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="product_price_final" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Original Price</label>
+            </settings>
+        </column>
+    </columns>
+</listing>
+ 

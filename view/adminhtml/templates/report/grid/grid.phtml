@@ -11,23 +11,12 @@
  */
 ?>
 <div class="data-grid-search-control-wrap">
-    <label class="data-grid-search-label" data-bind="click: scrollTo, attr: {title: $t('Search'), for: index}" title="Search" for="fulltext">
-        <span data-bind="i18n: 'Search'">Search</span>
+    <label class="data-grid-search-label" data-bind="" title="Search" for="fulltext">
+        <span data-bind="">Search</span>
     </label>
-    <input class="admin__control-text data-grid-search-control" type="text" data-bind="
-                i18n: placeholder,
-                attr: {
-                    id: index,
-                    placeholder: $t(placeholder)
-                },
-                textInput: inputValue,
-                hasFocus: focused,
-                keyboard: {
-                    13: apply.bind($data, false),
-                    27: cancel
-                }" id="fulltext" placeholder="Search by keyword">
-    <button class="action-submit" type="button" data-bind="click: apply.bind($data, false)">
-        <span data-bind="i18n: 'Search'">Search</span>
+    <input class="admin__control-text data-grid-search-control" type="text" data-bind="" id="fulltext" placeholder="Search by keyword">
+    <button class="action-submit" type="button" data-bind="">
+        <span data-bind="">Search</span>
     </button>
 </div>
 <?php if ($block->getCollection()): ?>
