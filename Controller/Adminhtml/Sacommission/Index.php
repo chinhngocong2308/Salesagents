@@ -8,12 +8,10 @@ class Index extends \Magento\Backend\App\Action
 
 	public function __construct(
 		\Magento\Backend\App\Action\Context $context,
-		\Magento\Framework\View\Result\PageFactory $resultPageFactory,
-		\AHT\Post\Helper\Data $helperData
+		\Magento\Framework\View\Result\PageFactory $resultPageFactory
 	) {
 		parent::__construct($context);
 		$this->resultPageFactory = $resultPageFactory;
-		$this->helperData = $helperData;
 	}
 
 	public function execute()
