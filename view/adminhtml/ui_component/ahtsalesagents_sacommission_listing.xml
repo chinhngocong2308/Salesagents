@@ -30,6 +30,20 @@
             <sticky>true</sticky>
         </settings>
         <bookmark name="bookmarks"/>
+
+        <!-- <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="provider" xsi:type="string">ahtsalesagents_sacommission_listing.ahtsalesagents_sacommission_listing_data_source</item>
+                    <item name="chipsProvider" xsi:type="string">ahtsalesagents_sacommission_listing.ahtsalesagents_sacommission_listing.listing_top.listing_filters_chips</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">ahtsalesagents_sacommission_listing.ahtsalesagents_sacommission_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.search</item>
+                    </item>
+                </item>
+            </argument>
+        </filterSearch> -->
+        
         <columnsControls name="columns_controls"/>
         <!-- <exportButton name="export_button"/> -->
         <filters name="listing_filters">
@@ -92,7 +106,12 @@
                 <label translate="true">Sales Agent</label>
             </settings>
         </column>
-         <column name="result_commission" class="AHT\Salesagents\Ui\Component\Listing\Column\Commissiontype">
+        <column name="ordered_qty">
+            <settings>
+                <label translate="true">QTY</label>
+            </settings>
+        </column>
+        <column name="result_commission" class="AHT\Salesagents\Ui\Component\Listing\Column\Commissiontype">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">120</item>
