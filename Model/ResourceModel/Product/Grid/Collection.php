@@ -99,7 +99,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         )->joinInner(
             ['order' => $this->getTable('sales_order')],
             implode(' AND ', $orderJoinCondition),
-            'status',
+            'status'
         )->joinLeft(
             ['commission_value' => $this->getConnection()->getTableName('catalog_product_entity_decimal')],
             "order_items.product_id = commission_value.entity_id and commission_value.attribute_id = {$this->getProductNameAttributeId('commission_value')}",

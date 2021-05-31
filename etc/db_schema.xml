@@ -23,4 +23,11 @@
                         <column name="order_item_sku"/>
                 </index>
         </table>
+        <table name="commission_type" resource="default" engine="innodb" comment="Sales Agent Table">
+                <column xsi:type="int" name="type_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Commsion type ID"/>
+                <column xsi:type="varchar" name="type_name" nullable="true" length="64" comment="Type Name"/>
+                <constraint xsi:type="primary" referenceId="PRIMARY">
+                        <column name="type_id"/>
+                </constraint>
+        </table>
 </schema>

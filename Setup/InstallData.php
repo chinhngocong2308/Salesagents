@@ -117,5 +117,18 @@ class InstallData implements InstallDataInterface
 		);
 		$customerAttr->save();
         $setup->endSetup();
+
+        $dataNewsRows = [
+            [
+                'type_name' => 'Fixel',
+            ],
+            [
+                'type_name' => 'Percent',
+            ]
+        ];
+        
+        foreach($dataNewsRows as $data) {
+            $setup->getConnection()->insert($setup->getTable('commission_type'), $data);
+        }
     }
 }
