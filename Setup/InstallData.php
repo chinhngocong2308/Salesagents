@@ -102,8 +102,10 @@ class InstallData implements InstallDataInterface
             'input' => 'boolean',
             'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             'visible'      => true,
-            'user_defined' => true,
+            'default' => '',
+            'user_defined' => false,
             'position'     => 999,
+            'required' => false,
             'system'       => 0
         ]);
 
