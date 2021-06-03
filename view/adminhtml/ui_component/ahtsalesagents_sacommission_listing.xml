@@ -43,7 +43,7 @@
                 </item>
             </argument>
         </filterSearch> -->
-        
+
         <columnsControls name="columns_controls"/>
         <!-- <exportButton name="export_button"/> -->
         <filters name="listing_filters">
@@ -125,6 +125,12 @@
             <settings>
                 <!-- <filter>text</filter> -->
                 <label translate="true">Original Price</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <!-- <filter>text</filter> -->
+                <label translate="true">Status</label>
             </settings>
         </column>
     </columns>

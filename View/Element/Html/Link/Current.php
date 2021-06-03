@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace AHT\Salesagents\View\Element\Html\Link;
 
 use Magento\Framework\App\DefaultPathInterface;
@@ -36,8 +38,15 @@ class Current extends Template
      * @var DefaultPathInterface
      */
     protected $_defaultPath;
-
+    /**
+     *
+     * @var \Magento\Customer\Model\Session
+     */
     protected $customer;
+    /**
+     * 
+     * @var CustomerRepositoryInterface
+     */
     protected $customerRepository;
 
     /**
@@ -58,7 +67,6 @@ class Current extends Template
         $this->_defaultPath = $defaultPath;
         $this->customer = $customer;
         $this->customerRepository = $customerRepository;
-
     }
 
     /**
@@ -170,15 +178,17 @@ class Current extends Template
             }
 
             $html .= '</a></li>';
-        } 
-        
+        }
+
         $customerId  = $this->customer->getCustomer()->getId();
         $customer = $this->customerRepository->getById($customerId);
-        $customer = $customer->getCustomAttribute('is_sales_agent')->getValue();
-
-        if ( $customer == \Magento\Eav\Model\Entity\Attribute\Source\Boolean::VALUE_NO) { 
-            $html = '';
+        $customer_sa = $customer->getCustomAttribute('is_sales_agent');
+        if($customer_sa) {
+            if ($customer_sa->getValue() == \Magento\Eav\Model\Entity\Attribute\Source\Boolean::VALUE_NO) {
+                $html = '';
+            }
         }
+        
         return $html;
     }
 

@@ -126,8 +126,9 @@ class InstallData implements InstallDataInterface
                 'type_name' => 'Percent',
             ]
         ];
-        
+        $eavSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, 'company_type');
         foreach($dataNewsRows as $data) {
+            
             $setup->getConnection()->insert($setup->getTable('commission_type'), $data);
         }
     }
